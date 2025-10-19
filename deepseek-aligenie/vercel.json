@@ -1,7 +1,21 @@
 {
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1",
+      "methods": ["GET", "POST", "OPTIONS"]
+    }
+  ],
   "functions": {
     "api/aligenie.js": {
-      "includeFiles": "**/*"
+      "maxDuration": 10
     }
   }
 }
